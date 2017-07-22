@@ -1,0 +1,2 @@
+/usr/bin/ar qc libDnsLib.a  CMakeFiles/DnsLib.dir/src/Message.cpp.o CMakeFiles/DnsLib.dir/src/server.cpp.o
+/usr/bin/ranlib libDnsLib.a

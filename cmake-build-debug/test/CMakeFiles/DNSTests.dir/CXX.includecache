@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Message.h
+types.h
+../include/types.h
+
+../include/types.h
+
+/home/itai/Documents/Cpp/DNS/test/message_tests.cpp
+Message.h
+/home/itai/Documents/Cpp/DNS/test/Message.h
+gtest/gtest.h
+-
+

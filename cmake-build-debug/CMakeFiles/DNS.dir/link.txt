@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/DNS.dir/src/main.cpp.o  -o DNS libs/DnsLib/libDnsLib.a 

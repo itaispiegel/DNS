@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="DnsLib"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libs\;CMake Files\libs\DnsLib\;CMake Files\libs\DnsLib\test\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DnsLib">
+				<Option output="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/libDnsLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 DnsLib"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DnsLib/fast">
+				<Option output="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/libDnsLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 DnsLib/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DnsLibTests">
+				<Option output="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/DnsLibTests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 DnsLibTests"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DnsLibTests/fast">
+				<Option output="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/DnsLibTests" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 DnsLibTests/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/itai/Documents/Cpp/DNS/cmake-build-debug/libs/DnsLib/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include/Message.h">
+			<Option target="DnsLib"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include/server.h">
+			<Option target="DnsLib"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include/types.h">
+			<Option target="DnsLib"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/include/util.h">
+			<Option target="DnsLib"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/src/Message.cpp">
+			<Option target="DnsLib"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/src/server.cpp">
+			<Option target="DnsLib"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/test/message_tests.cpp">
+			<Option target="DnsLibTests"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\DnsLib\"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\DnsLib\"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\DnsLib\test\"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\DnsLib\test\"/>
+		</Unit>
+		<Unit filename="/home/itai/Documents/Cpp/DNS/libs/DnsLib/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\DnsLib\test\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
