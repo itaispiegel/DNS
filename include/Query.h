@@ -5,8 +5,8 @@
 #ifndef DNS_QUERY_H
 #define DNS_QUERY_H
 
-#include "Message.h"
-#include "Types.h
+#include "message.h"
+#include "Types.h"
 #include <string>
 
 using DNS::Message;

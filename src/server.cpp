@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "../include/server.h"
-#include "../include/Util.h"
+#include "server.h"
+#include "util.h"
 
 Server::Server() {
     addr = new sockaddr_in;

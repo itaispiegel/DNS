@@ -4,7 +4,7 @@ COMPILE=$(CXX) $(CFLAGS)
 
 INCLUDE=-Iinclude
 SOURCES=$(wildcard src/*.cpp)
-TESTS=MessageTests.o
+TESTS=message_tests.o
 
 BIN=bin/dns
 
@@ -16,6 +16,7 @@ compile:
 	$(COMPILE) $(INCLUDE) $(SOURCES) main.cpp -o $(BIN)
 
 tests: $(TESTS)
+	bin/message_tests.o
 
 %.o: test/%.cpp
 	$(COMPILE) $(INCLUDE) $(SOURCES) $< $(GTEST) -o bin/$@

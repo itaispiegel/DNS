@@ -1,15 +1,15 @@
-//
-// Created by itai on 7/8/17.
-//
+/**
+ * This class represents an abstract DNS message and basically has a subclass for a query and for a response.
+ * @author Itai Spiegel
+**/
 
 #ifndef DNS_MESSAGE_H
 #define DNS_MESSAGE_H
 
-#include "Types.h"
+#include "types.h"
 #include <stddef.h>
 
 namespace DNS {
-
     class Message {
     public:
 
@@ -24,15 +24,18 @@ namespace DNS {
         };
 
         /**
-         * Default constructor.
-         */
-        Message() = default;
+         * Pure virtual function that will code the DNS message into the given buffer.
+         * @param buffer The buffer to code to.
+         * @return The size of the coded message.
+        **/
+        virtual int code(uchar* buffer) = 0;
 
         /**
-         * Constructor
-         * @param type The type of the DNS message.
-         */
-        Message(Type type) : m_type(type) {}
+         * Pure virtual function that will decode the given buffer into the current message instance.
+         * @param buffer The buffer to decode.
+         * @param size The size of the buffer.
+        **/
+        virtual void decode(uchar* buffer, size_t size) = 0;
 
         /**
          * Code the DNS message header section.
@@ -47,82 +50,54 @@ namespace DNS {
         void decode_hdr(uchar* buffer);
 
         /**
-         * Puts the 8 bits into the buffer.
-         * @param buffer
-         * @param value
+         * Puts the given 8 bits into the given buffer.
+         * @param buffer The buffer to put the bits into.
+         * @param value The value to put into the buffer.
          */
         void put8bits(uchar*& buffer, uchar value);
 
         /**
          * Puts the 16 bits into the buffer.
-         * @param buffer
-         * @param value
+         * @param buffer The buffer to put the bits into.
+         * @param value The value to put into the buffer.
          */
         void put16bits(uchar*& buffer, ushort value);
 
         /**
          * Returns the next 8 bits of the buffer.
          * @param buffer The buffer to get the bits from.
-         * @return
+         * @return The next 8 bits of the buffer.
          */
         uchar get8bits(uchar*& buffer);
 
         /**
          * Returns the next 16 bits of the buffer.
          * @param buffer The buffer to get the bits from.
-         * @return
+         * @return The next 16 bits of the buffer.
          */
         ushort get16bits(uchar*& buffer);
 
         ushort get_id() const;
+        ushort get_qdCount() const;
+        ushort get_anCount() const;
+        ushort get_nsCount() const;
+        ushort get_arCount() const;
 
         void set_id(ushort id);
-
-        Type get_type() const;
-
-        void set_type(Type type);
-
-        uchar get_opcode() const;
-
-        void set_opcode(uchar opcode);
-
-        bool is_aa() const;
-
-        void set_aa(bool aa);
-
-        bool is_truncated() const;
-
-        void set_truncation(bool truncation);
-
-        bool is_recursion_desired() const;
-
-        void set_recursion_desired(bool rd);
-
-        bool is_recursion_available() const;
-
-        void set_recursion_available(bool ra);
-
-        uchar get_response_code() const;
-
-        void set_response_code(uchar response);
-
-        ushort get_qd_count() const;
-
-        void set_qd_count(ushort qd_count);
-
-        ushort get_an_count() const;
-
-        void set_an_count(ushort an_count);
-
-        ushort get_ns_count() const;
-
-        void set_ns_count(ushort ns_count);
-
-        ushort get_ar_count() const;
-
-        void set_ar_count(ushort ar_count);
+        void set_qdCount(ushort qd);
+        void set_anCount(ushort an);
+        void set_nsCount(ushort ns);
+        void set_arCount(ushort ar);
 
     protected:
+
+        /**
+         * Constructor
+         * @param type The type of the DNS message.
+         */
+        Message(Type type) : m_type(type) {}
+
+        virtual ~Message() { }
 
         /**
          * The first two bytes represent the ID that the client generated.
@@ -135,8 +110,7 @@ namespace DNS {
         Type m_type;
 
         /**
-         * These 4 bytes represent the type of query:
-         *
+         * 4 Bit field which represents the type of query message:
          * <table>
          * <tr>
          * <th>Value</th>
@@ -248,4 +222,5 @@ namespace DNS {
         ushort m_arCount;
     };
 }
+
 #endif //DNS_MESSAGE_H

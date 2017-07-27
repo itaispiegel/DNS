@@ -3,37 +3,47 @@
 //
 
 #include <gtest/gtest.h>
-#include "../include/Message.h"
+#include "message.h"
 
 using DNS::Message;
 
-class TestMessage : public ::testing::Test {
+class TestMessage : public Message, public ::testing::Test {
+public:
+    TestMessage() : Message(Message::Type::Response) {}
+
+    // This shouldn't be called.
+    int code(uchar* buffer) {
+        return 0;
+    }
+
+    // This shouldn't be called.
+    void decode(uchar* buffer, size_t size) {
+    }
+
 protected:
-    Message message;
 
     /**
      * Setup a mock message.
      */
     virtual void SetUp() {
-        message.set_id(7414);
-        message.set_type(Message::Type::Response);
-        message.set_opcode(11);
-        message.set_aa(true);
-        message.set_truncation(false);
-        message.set_recursion_desired(true);
-        message.set_recursion_available(true);
-        message.set_response_code(4);
-        message.set_qd_count(24156);
-        message.set_an_count(8317);
-        message.set_ns_count(4219);
-        message.set_ar_count(4753);
+        m_id = 7414;
+        m_opcode = 11;
+        m_aa = true;
+        m_tc = false;
+        m_rd = true;
+        m_ra = true;
+        m_rcode = 4;
+        m_qdCount = 24156;
+        m_anCount = 8317;
+        m_nsCount = 4219;
+        m_arCount = 4753;
     }
 };
 
 /**
  * Test the put 16 bits function of the message.
  */
-TEST_F(TestMessage, TestPut16bits) {
+TEST_F(TestMessage, TestPut16Bits) {
 
     // The size in bits we are comparing
     const size_t cmp_size = 16;
@@ -44,7 +54,7 @@ TEST_F(TestMessage, TestPut16bits) {
     uchar expected[cmp_size] = {0x1c, 0xf6};
 
     // Put the expected bytes in the buffer
-    message.put16bits(buffer, 7414);
+    Message::put16bits(buffer, 7414);
 
     // Compare the results
     int result = memcmp(orig_buffer, expected, cmp_size / 8);
@@ -69,7 +79,7 @@ TEST_F(TestMessage, TestGet16bits) {
 
     // Get the actual result.
     ushort expected = 0x54f8;
-    ushort actual = message.get16bits(buffer);
+    ushort actual = Message::get16bits(buffer);
 
     // Compare the actual and expected results.
     ASSERT_EQ(expected, actual);
@@ -83,7 +93,7 @@ TEST_F(TestMessage, TestGet16bits) {
  */
 TEST_F(TestMessage, TestSerialization) {
     uchar* buffer = new uchar[Message::HEADER_SIZE];
-    message.code_hdr(buffer);
+    Message::code_hdr(buffer);
 
     uchar expected[Message::HEADER_SIZE] = {0x1c, 0xf6, 0xdd, 0x84, 0x5e, 0x5c, 0x20, 0x7d, 0x10, 0x7b, 0x12, 0x91};
     ASSERT_EQ(memcmp(buffer, expected, Message::HEADER_SIZE), 0);
