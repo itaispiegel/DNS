@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "Message.h"
+#include "../include/Message.h"
 
 using DNS::Message;
 
@@ -36,7 +36,7 @@ protected:
 TEST_F(TestMessage, TestPut16bits) {
 
     // The size in bits we are comparing
-    size_t cmp_size = 16;
+    const size_t cmp_size = 16;
 
     // Initialize the new buffer and the expected buffer.
     uchar* buffer = new uchar[cmp_size];

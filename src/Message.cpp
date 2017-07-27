@@ -10,7 +10,7 @@ using DNS::Message;
 void Message::put8bits(uchar*& buffer, uchar value) {
     buffer[0] = value;
     buffer += 1;
-};
+}
 
 void Message::put16bits(uchar*& buffer, ushort value) {
     put8bits(buffer, (uchar) ((value & 0xFF00) >> 8));

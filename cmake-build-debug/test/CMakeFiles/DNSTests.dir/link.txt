@@ -1,1 +1,0 @@
-/usr/bin/c++   -g  -Wl,--export-dynamic CMakeFiles/DNSTests.dir/message_tests.cpp.o  -o DNSTests -rdynamic -lgtest -lgtest_main 
