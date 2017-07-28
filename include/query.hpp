@@ -1,12 +1,13 @@
-//
-// Created by itai on 7/22/17.
-//
+/**
+ * This this subclass of the abstract DNS message implements a DNS query message.
+ * @author Itai Spiegel
+**/
 
 #ifndef DNS_QUERY_H
 #define DNS_QUERY_H
 
-#include "message.h"
-#include "Types.h"
+#include "message.hpp"
+#include "types.hpp"
 #include <string>
 
 using DNS::Message;

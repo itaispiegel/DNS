@@ -1,6 +1,7 @@
-//
-// Created by itai on 7/21/17.
-//
+/**
+ * This file contains some tests for the base DNS message class.
+ * @author Itai Spiegel
+**/
 
 #include <gtest/gtest.h>
 #include "message.hpp"
@@ -39,6 +40,7 @@ protected:
         m_arCount = 4753;
     }
 };
+
 
 /**
  * Test the put 16 bits function of the message.
@@ -91,7 +93,7 @@ TEST_F(TestMessage, TestGet16bits) {
 /**
  * Test that serializing a message to a byte array gives the expected value.
  */
-TEST_F(TestMessage, TestSerialization) {
+TEST_F(TestMessage, TestHeaderSerialization) {
     uchar* buffer = new uchar[Message::HEADER_SIZE];
     Message::code_hdr(buffer);
 
@@ -99,4 +101,27 @@ TEST_F(TestMessage, TestSerialization) {
     ASSERT_EQ(memcmp(buffer, expected, Message::HEADER_SIZE), 0);
 
     delete[] buffer;
+}
+
+/**
+ * Test that deserializing a mock buffer to the message mock gives the expected results.
+**/
+TEST_F(TestMessage, TestHeaderDeserialization) {
+    uchar buffer[Message::HEADER_SIZE] = {0x29, 0xe9, 0xcb, 0x11, 0xae, 0xa7, 0xb3, 0x19, 0x14, 0x77, 0x22, 0x11};
+
+    Message::decode_hdr(buffer);
+    EXPECT_EQ(Message::get_id(), 10729);
+
+    EXPECT_EQ(m_qr, Type::Response);
+    EXPECT_EQ(m_opcode, 9);
+    EXPECT_EQ(m_aa, 0);
+    EXPECT_EQ(m_tc, 1);
+    EXPECT_EQ(m_rd, 1);
+    EXPECT_EQ(m_ra, 0);
+    EXPECT_EQ(m_rcode, 1);
+
+    EXPECT_EQ(Message::get_qdCount(), 44711);
+    EXPECT_EQ(Message::get_anCount(), 45849);
+    EXPECT_EQ(Message::get_nsCount(), 5239);
+    EXPECT_EQ(Message::get_arCount(), 8721);
 }
