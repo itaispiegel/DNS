@@ -6,7 +6,7 @@
 #ifndef DNS_MESSAGE_H
 #define DNS_MESSAGE_H
 
-#include "types.h"
+#include "types.hpp"
 #include <stddef.h>
 
 namespace DNS {

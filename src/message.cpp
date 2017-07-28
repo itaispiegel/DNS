@@ -2,7 +2,7 @@
 // Created by itai on 7/8/17.
 //
 
-#include "message.h"
+#include "message.hpp"
 #include <iostream>
 
 using DNS::Message;

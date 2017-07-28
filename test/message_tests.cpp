@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "message.h"
+#include "message.hpp"
 
 using DNS::Message;
 
