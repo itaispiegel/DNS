@@ -11,6 +11,6 @@ Logger& Logger::instance() {
     return *Logger::s_instance;
 }
 
-void Logger::log(const std::string& msg) {
+void Logger::debug(const std::string& msg) {
     std::cout << msg << std::endl;
 }

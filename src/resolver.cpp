@@ -1,10 +1,13 @@
 #include "resolver.hpp"
+#include "logger.hpp"
 #include <fstream>
 
 const std::string Resolver::DOMAINS_FILE = "/etc/dns/domains.conf";
 
 
 Resolver::Resolver() {
+    debug("Initializing resolver");
+
     parse_domains();
 }
 
@@ -14,9 +17,13 @@ void Resolver::parse_domains() {
 
     // Iterate over all ip and domain pairs and add each one to the map.
     std::string ip, domain;
-    while (domains_file >> ip >> domain) {
+
+    size_t i = 0;
+    for (; domains_file >> ip >> domain; ++i) {
         m_resolved[ip] = domain;
     }
+
+    debug(std::to_string(i) + " domains were resolved");
 
     domains_file.close(); 
 }

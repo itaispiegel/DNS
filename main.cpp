@@ -7,7 +7,7 @@ using DNS::Message;
 
 int main() {
     Logger& logger = Logger::instance();
-    logger.log("Initializing DNS");
+    logger.debug("Initializing DNS");
 
     Resolver resolver;
 

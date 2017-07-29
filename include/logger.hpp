@@ -1,6 +1,7 @@
 /**
  * This is a singleton class used for logging messages.
  * For now this logs everything to STDOUT, but later this will change and log everything to a file.
+ * @author Itai Spiegel
 **/
 
 #ifndef LOGGER_H
@@ -16,7 +17,7 @@ class Logger {
         **/
         static Logger& instance();
 
-        void log(const std::string& msg);
+        void debug(const std::string& msg);
 
     private:
         Logger() = default;

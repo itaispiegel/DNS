@@ -9,10 +9,11 @@
 #ifndef RESOLVER_H
 #define RESOLVER_H
 
+#include "component.hpp"
 #include <string>
 #include <unordered_map>
 
-class Resolver {
+class Resolver : Component {
     public:
 
         /**
