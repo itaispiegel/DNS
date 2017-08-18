@@ -11,7 +11,7 @@ using DNS::Message;
 /**
  * Receives a reference to the buffer of unsigned bytes, puts the given unsigned byte and increments the pointer.
 **/
-void Message::put8bits(uchar*& buffer, uchar value) {
+void Message::put8bits(char*& buffer, char value) {
     buffer[0] = value;
     buffer += 1;
 }
@@ -19,16 +19,16 @@ void Message::put8bits(uchar*& buffer, uchar value) {
 /**
  * Calls twice the Message::put8bits function.
 **/
-void Message::put16bits(uchar*& buffer, ushort value) {
-    put8bits(buffer, (uchar) ((value & 0xFF00) >> 8));
-    put8bits(buffer, (uchar) (value & 0x00FF));
+void Message::put16bits(char*& buffer, ushort value) {
+    put8bits(buffer, (char) ((value & 0xFF00) >> 8));
+    put8bits(buffer, (char) (value & 0x00FF));
 }
 
 /**
  * Receives a reference to a buffer of unsigned bytes, returns the first value and increments the pointer.
 **/
-uchar Message::get8bits(uchar*& buffer) {
-    uchar result = buffer[0];
+char Message::get8bits(char*& buffer) {
+    char result = buffer[0];
     buffer += 1;
 
     return result;
@@ -37,21 +37,21 @@ uchar Message::get8bits(uchar*& buffer) {
 /**
  * Basically calls twice the Message::get8bits function and returns the two values as an unsigned short.
 **/
-ushort Message::get16bits(uchar*& buffer) {
+ushort Message::get16bits(char*& buffer) {
 
     // Get the first byte and left shift it by 8 bits.
     ushort c1 = static_cast<short>(get8bits(buffer));
     c1 = c1 << 8;
 
     // Add the second byte and return.
-    uchar c2 = get8bits(buffer);
+    char c2 = get8bits(buffer);
     return c1 + c2;
 }
 
 /**
  * Serializes the message instance to the given buffer.
 **/
-void Message::code_hdr(uchar* buffer) {
+void Message::code_hdr(char* buffer) {
     put16bits(buffer, m_id);
 
     ushort flags = m_qr << 15;
@@ -76,7 +76,7 @@ void Message::code_hdr(uchar* buffer) {
 /**
  * Deserializes the given buffer to the current message instance.
 **/
-void Message::decode_hdr(uchar* buffer) {
+void Message::decode_hdr(char* buffer) {
     m_id = get16bits(buffer);
     
     ushort flags = get16bits(buffer);

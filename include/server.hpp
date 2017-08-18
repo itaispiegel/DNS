@@ -10,9 +10,10 @@
 
 #include "component.hpp"
 #include "resolver.hpp"
+#include "types.hpp"
 
 #define PORT 53
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1024
 
 
 class Server : public Component {

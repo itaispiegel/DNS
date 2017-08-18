@@ -1,6 +1,6 @@
 # C++ Compilation properties
 CXX=g++
-CFLAGS=-Wall -g -pedantic -std=c++11 -pthread
+CFLAGS=-Wall -pedantic -std=c++11 -pthread
 COMPILE=$(CXX) $(CFLAGS)
 
 # What to compile
@@ -16,6 +16,10 @@ GTEST=-lgtest -lgtest_main -lpthread
 
 .PHONY: all install-dependencies compile run tests clean
 all: compile run
+
+debug: CFLAGS += -DDEBUG -g
+debug: compile
+	gdb $(BIN)
 
 install-dependencies:
 	sudo yum install -y gtest-devel

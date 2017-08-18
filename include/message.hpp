@@ -19,7 +19,7 @@ namespace DNS {
         /**
          * The type of DNS message.
          */
-        enum Type : uchar {
+        enum Type : char {
             Query = 0, Response = 1
         };
 
@@ -28,54 +28,54 @@ namespace DNS {
          * @param buffer The buffer to code to.
          * @return The size of the coded message.
         **/
-        virtual int code(uchar* buffer) = 0;
+        virtual int code(char* buffer) = 0;
 
         /**
          * Pure virtual function that will decode the given buffer into the current message instance.
          * @param buffer The buffer to decode.
          * @param size The size of the buffer.
         **/
-        virtual void decode(uchar* buffer, size_t size) = 0;
+        virtual void decode(char* buffer, size_t size) = 0;
 
         /**
          * Code the DNS message header section.
          * @param buffer The buffer to code the message header to.
          */
-        void code_hdr(uchar* buffer);
+        void code_hdr(char* buffer);
 
         /**
          * Decode the given buffer into the current instance.
          * @param buffer The buffe to decode.
          */
-        void decode_hdr(uchar* buffer);
+        void decode_hdr(char* buffer);
 
         /**
          * Puts the given 8 bits into the given buffer.
          * @param buffer The buffer to put the bits into.
          * @param value The value to put into the buffer.
          */
-        void put8bits(uchar*& buffer, uchar value);
+        void put8bits(char*& buffer, char value);
 
         /**
          * Puts the 16 bits into the buffer.
          * @param buffer The buffer to put the bits into.
          * @param value The value to put into the buffer.
          */
-        void put16bits(uchar*& buffer, ushort value);
+        void put16bits(char*& buffer, ushort value);
 
         /**
          * Returns the next 8 bits of the buffer.
          * @param buffer The buffer to get the bits from.
          * @return The next 8 bits of the buffer.
          */
-        uchar get8bits(uchar*& buffer);
+        char get8bits(char*& buffer);
 
         /**
          * Returns the next 16 bits of the buffer.
          * @param buffer The buffer to get the bits from.
          * @return The next 16 bits of the buffer.
          */
-        ushort get16bits(uchar*& buffer);
+        ushort get16bits(char*& buffer);
 
         // Getters
         ushort get_id() const;
@@ -138,7 +138,7 @@ namespace DNS {
          * </tr>
          * </table>
          */
-        uchar m_opcode;
+        char m_opcode;
 
         /**
          * Authoritative Answer - this bit is valid in responses, and specifies
@@ -202,7 +202,7 @@ namespace DNS {
          * </tr>
          * </table>
          */
-        uchar m_rcode;
+        char m_rcode;
 
         /**
          * An unsigned 16 bit integer specifying the number of entries in the question section.
