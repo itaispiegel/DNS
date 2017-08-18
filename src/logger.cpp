@@ -12,5 +12,9 @@ Logger& Logger::instance() {
 }
 
 void Logger::debug(const std::string& msg) {
-    std::cout << msg << std::endl;
+    std::cout << "[DEBUG] " << msg << std::endl;
+}
+
+void Logger::error(const std::string& msg) {
+	std::cout << "[ERROR] " << msg << std::endl;
 }

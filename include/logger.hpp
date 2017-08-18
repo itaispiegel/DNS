@@ -18,6 +18,7 @@ class Logger {
         static Logger& instance();
 
         void debug(const std::string& msg);
+		void error(const std::string& msg);
 
     private:
         Logger() = default;

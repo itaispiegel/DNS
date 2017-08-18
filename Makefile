@@ -14,22 +14,21 @@ BIN=bin/dns
 # GoogleTest linkage includes
 GTEST=-lgtest -lgtest_main -lpthread
 
-.PHONY: all compile run tests clean
-# Compile and run the server
+.PHONY: all install-dependencies compile run tests clean
 all: compile run
 
-# Compile the server
+install-dependencies:
+	sudo yum install -y gtest-devel
+
 compile: $(SOURCES)
 	$(COMPILE) $(INCLUDE) $(SOURCES) main.cpp -o $(BIN)
 
 run:
-	$(BIN)
+	@$(BIN)
 
-# Run the tests
 tests: $(TESTS)
 	$(addprefix bin/,$(TESTS))
 
-# Compile the tests
 %.o: test/%.cpp
 	$(COMPILE) $(INCLUDE) $(SOURCES) $< $(GTEST) -o bin/$@
 

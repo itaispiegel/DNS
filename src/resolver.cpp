@@ -29,5 +29,11 @@ void Resolver::parse_domains() {
 }
 
 std::string Resolver::resolve(const std::string& ip) const {
-    return m_resolved.at(ip);
+	auto result = m_resolved.find(ip);
+
+	if (result != m_resolved.end()) {
+		return result->second;
+	}
+
+	return "";
 }

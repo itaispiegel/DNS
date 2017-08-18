@@ -8,3 +8,7 @@ Logger& Component::logger() const {
 void Component::debug(const std::string& msg) const {
     logger().debug(msg);
 }
+
+void Component::error(const std::string& msg) const {
+	logger().error(msg);
+}
