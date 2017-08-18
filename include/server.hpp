@@ -8,32 +8,60 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-#define PORT 5151
+#include "component.hpp"
+#include "resolver.hpp"
+
+#define PORT 53
 #define BUFFER_SIZE 10
 
 
-class Server {
+class Server : public Component {
 public:
-    Server();
+	/**
+	 * The constructor initializes a new UDP socket on port 53.
+	**/
+    Server(Resolver* resolver);
 
+	/**
+	 * The destructor deletes the server socket.
+	**/
     virtual ~Server();
 
-    void bind_server();
+	/**
+	 * Send given the data to the client. 
+	**/
+    void send(const std::string& msg);
 
-    size_t recv();
-
-    void send(size_t len);
-
+	/**
+	 * Run the DNS server - handle client requests.
+	**/
     void run();
 
 private:
-    int socket_file_descriptor;
-    sockaddr_in* addr;
-    socklen_t addr_len;
+	// Private methods
 
-    sockaddr_in* client;
+	/**
+	 * Bind the server's socket.
+	**/
+    void bind_server();
 
-    char buffer[BUFFER_SIZE];
+	/**
+	 * Receive data from the server's socket.
+	**/
+    size_t recv();
+
+	// Members
+
+	// The file descriptor of the socket
+    int m_sock_fd;
+    sockaddr_in* m_addr;
+    socklen_t m_addr_len;
+
+    sockaddr_in* m_client;
+
+    char m_buffer[BUFFER_SIZE];
+
+	Resolver* m_resolver;
 };
 
 

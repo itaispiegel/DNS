@@ -7,9 +7,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "logger.hpp"
 
 #define DIE(MSG) {\
-    fprintf(stderr, MSG);\
+	Logger& logger = Logger::instance();\
+	logger.error(MSG);\
     exit(1);\
 }
 
