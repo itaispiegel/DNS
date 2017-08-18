@@ -1,6 +1,7 @@
-//
-// Created by itai on 7/21/17.
-//
+/**
+ * This file contains some nice and convenient typedefs.
+ * @author Itai Spiegel
+**/
 
 #ifndef DNS_TYPES_H
 #define DNS_TYPES_H

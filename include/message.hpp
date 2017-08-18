@@ -6,7 +6,7 @@
 #ifndef DNS_MESSAGE_H
 #define DNS_MESSAGE_H
 
-#include "types.h"
+#include "types.hpp"
 #include <stddef.h>
 
 namespace DNS {
@@ -19,7 +19,7 @@ namespace DNS {
         /**
          * The type of DNS message.
          */
-        enum Type {
+        enum Type : uchar {
             Query = 0, Response = 1
         };
 
@@ -77,12 +77,14 @@ namespace DNS {
          */
         ushort get16bits(uchar*& buffer);
 
+        // Getters
         ushort get_id() const;
         ushort get_qdCount() const;
         ushort get_anCount() const;
         ushort get_nsCount() const;
         ushort get_arCount() const;
 
+        // Setters
         void set_id(ushort id);
         void set_qdCount(ushort qd);
         void set_anCount(ushort an);
@@ -95,8 +97,11 @@ namespace DNS {
          * Constructor
          * @param type The type of the DNS message.
          */
-        Message(Type type) : m_type(type) {}
+        Message(Type type) : m_qr(type) {}
 
+        /**
+         * Destructor
+        **/
         virtual ~Message() { }
 
         /**
@@ -107,7 +112,7 @@ namespace DNS {
         /**
          * This bit represents whether this message is a query or a response.
          */
-        Type m_type;
+        bool m_qr;
 
         /**
          * 4 Bit field which represents the type of query message:
@@ -220,6 +225,15 @@ namespace DNS {
          * records section.
          */
         ushort m_arCount;
+
+    private:
+        static const ushort RCODE_MASK = 0xF;
+        static const ushort RA_MASK = 0x80;
+        static const ushort RD_MASK = 0x160;
+        static const ushort TC_MASK = 0x320;
+        static const ushort AA_MASK = 0x640;
+        static const ushort OPCODE_MASK = 0x7800;
+        static const ushort QR_MASK = 0x8000;
     };
 }
 

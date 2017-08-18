@@ -1,22 +1,33 @@
+# C++ Compilation properties
 CXX=g++
 CFLAGS=-Wall -g -pedantic -std=c++11 -pthread
 COMPILE=$(CXX) $(CFLAGS)
 
+# What to compile
 INCLUDE=-Iinclude
 SOURCES=$(wildcard src/*.cpp)
-TESTS=message_tests.o
+TESTS=$(patsubst %.cpp,%.o,$(notdir $(wildcard test/*.cpp)))
 
+# The executable file name
 BIN=bin/dns
 
+# GoogleTest linkage includes
 GTEST=-lgtest -lgtest_main -lpthread
 
-all: compile tests
+.PHONY: all install-dependencies compile run tests clean
+all: compile run
 
-compile:
+install-dependencies:
+	sudo yum install -y gtest-devel
+
+compile: $(SOURCES)
 	$(COMPILE) $(INCLUDE) $(SOURCES) main.cpp -o $(BIN)
 
+run:
+	@$(BIN)
+
 tests: $(TESTS)
-	bin/message_tests.o
+	$(addprefix bin/,$(TESTS))
 
 %.o: test/%.cpp
 	$(COMPILE) $(INCLUDE) $(SOURCES) $< $(GTEST) -o bin/$@
