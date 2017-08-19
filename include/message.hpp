@@ -7,10 +7,11 @@
 #define DNS_MESSAGE_H
 
 #include "types.hpp"
+#include "component.hpp"
 #include <stddef.h>
 
 namespace DNS {
-    class Message {
+    class Message : public Component {
     public:
 
         // The header size in bytes

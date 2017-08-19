@@ -1,5 +1,5 @@
 /**
- * This this subclass of the abstract DNS message implements a DNS query message.
+ * This subclass of the abstract DNS message implements a DNS query message.
  * @author Itai Spiegel
 **/
 
@@ -20,8 +20,13 @@ namespace DNS {
 		int code(char* buffer);
 		void decode(char* buffer, size_t size);
 
+		/**
+		 * Parse the queried name.
+		**/
+		void decode_qname(char*& buffer);
+
 	protected:
-		std::string m_query;
+		std::string m_qname;
 		ushort m_qtype;
 		ushort m_qclass;
 	};
