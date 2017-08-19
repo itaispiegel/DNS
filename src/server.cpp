@@ -62,7 +62,7 @@ size_t Server::recv() {
 
 void Server::send(const std::string& msg) {
 	sendto(m_sock_fd, msg.c_str(), msg.length(), 0,
-			(struct sockaddr*) m_client, m_addr_len);
+		(struct sockaddr*) m_client, m_addr_len);
 }
 
 void Server::run() {

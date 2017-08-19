@@ -10,8 +10,8 @@
 #include "logger.hpp"
 
 #define DIE(MSG) {\
-	Logger& logger = Logger::instance();\
-	logger.error(MSG);\
+    Logger& logger = Logger::instance();\
+    logger.error(MSG);\
     exit(1);\
 }
 

@@ -18,10 +18,10 @@ class Component {
         **/
         void debug(const std::string& msg) const;
 
-		/**
-		 * Write an error message with the logger.
-		 **/
-		void error(const std::string& msg) const;
+	/**
+	 * Write an error message with the logger.
+	 **/
+	void error(const std::string& msg) const;
 
     private:
         /**

@@ -18,42 +18,42 @@
 
 class Server : public Component {
 public:
-	/**
-	 * The constructor initializes a new UDP socket on port 53.
-	**/
+    /**
+     * The constructor initializes a new UDP socket on port 53.
+    **/
     Server(Resolver* resolver);
 
-	/**
-	 * The destructor deletes the server socket.
-	**/
+    /**
+     * The destructor deletes the server socket.
+    **/
     virtual ~Server();
 
-	/**
-	 * Send given the data to the client. 
-	**/
+    /**
+     * Send given the data to the client. 
+    **/
     void send(const std::string& msg);
 
-	/**
-	 * Run the DNS server - handle client requests.
-	**/
+    /**
+     * Run the DNS server - handle client requests.
+    **/
     void run();
 
 private:
-	// Private methods
+    // Private methods
 
-	/**
-	 * Bind the server's socket.
-	**/
+    /**
+     * Bind the server's socket.
+    **/
     void bind_server();
 
-	/**
-	 * Receive data from the server's socket.
-	**/
+    /**
+     * Receive data from the server's socket.
+    **/
     size_t recv();
 
-	// Members
+    // Members
 
-	// The file descriptor of the socket
+    // The file descriptor of the socket
     int m_sock_fd;
     sockaddr_in* m_addr;
     socklen_t m_addr_len;
@@ -62,7 +62,7 @@ private:
 
     char m_buffer[BUFFER_SIZE];
 
-	Resolver* m_resolver;
+    Resolver* m_resolver;
 };
 
 
