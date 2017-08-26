@@ -11,6 +11,7 @@
 #include "component.hpp"
 #include "resolver.hpp"
 #include "types.hpp"
+#include "query.hpp"
 
 #define PORT 53
 #define BUFFER_SIZE 1024
@@ -50,6 +51,11 @@ private:
      * Receive data from the server's socket.
     **/
     size_t recv();
+
+	/**
+	 * Handle the given query.
+	**/
+	void handle_query(DNS::Query* query);
 
     // Members
 

@@ -15,7 +15,12 @@ using DNS::Message;
 namespace DNS {
 	class Query : public Message {
 	public:
-		Query() : Message(Type::Query) {}
+
+		enum Type : ushort {
+			A = 1, AAAA = 28
+		};
+
+		Query() : Message(Message::Type::Query) {}
 
 		int code(char* buffer);
 		void decode(char* buffer, size_t size);
@@ -25,9 +30,14 @@ namespace DNS {
 		**/
 		void decode_qname(char*& buffer);
 
+
+		// Getters
+		const std::string& get_qname() const;
+		const Query::Type get_qtype() const;
+
 	protected:
 		std::string m_qname;
-		ushort m_qtype;
+		Type m_qtype;
 		ushort m_qclass;
 	};
 }

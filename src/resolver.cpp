@@ -20,19 +20,22 @@ void Resolver::parse_domains() {
 
 	size_t i = 0;
 	for (; domains_file >> ip >> domain; ++i) {
-		m_resolved[ip] = domain;
+		m_resolved[domain] = ip;
 	}
 
 	debug(std::to_string(i) + " domains were resolved");
 	domains_file.close(); 
 }
 
-std::string Resolver::resolve(const std::string& ip) const {
-	auto result = m_resolved.find(ip);
+std::string Resolver::resolve(const std::string& domain) const {
+	auto result = m_resolved.find(domain);
+	debug("Resolving for query: " + domain);
 
 	if (result != m_resolved.end()) {
+		debug(result->second);
 		return result->second;
 	}
 
+	debug("The query couldn't be resolved.");
 	return "";
 }

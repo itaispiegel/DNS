@@ -9,6 +9,9 @@
 #include "resolver.hpp"
 #include "query.hpp"
 
+using DNS::Message;
+using DNS::Query;
+
 Server::Server(Resolver* resolver) : m_resolver(resolver) {
 	// Create a new inbound address
 	m_addr = new sockaddr_in;
@@ -65,6 +68,20 @@ void Server::send(const std::string& msg) {
 		(struct sockaddr*) m_client, m_addr_len);
 }
 
+void Server::handle_query(Query* query) {
+	debug("Received query of type: " + std::to_string(query->get_qtype()));
+
+	// Drop AAAA queries since our server does not support IPv6.
+	if (query->get_qtype() == Query::Type::AAAA) {
+		debug("Dropping IPv6 query");
+		delete query;
+		return;
+	}
+
+	std::string resolved = m_resolver->resolve(query->get_qname());
+	delete query;
+}
+
 void Server::run() {
 	bind_server();
 	
@@ -77,11 +94,10 @@ void Server::run() {
 		if (len < Message::HEADER_SIZE) {
 			error("Received a malformed packet (size=" + std::to_string(len) + ").");
 		} else {	
-			DNS::Query query;
-			query.decode(m_buffer, len);
-	
-			std::string resolved = m_resolver->resolve(m_buffer);
-			send(resolved);
+			Query* query = new Query;
+			query->decode(m_buffer, len);
+
+			handle_query(query);
 		}
 	}
 }
