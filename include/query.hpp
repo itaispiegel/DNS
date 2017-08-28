@@ -20,7 +20,8 @@ namespace DNS {
 			A = 1, AAAA = 28
 		};
 
-		Query() : Message(Message::Type::Query) {}
+		Query() : Message(Message::Query) {}
+		Query(Message::Type type) : Message(type) {}
 
 		int code(char* buffer);
 		void decode(char* buffer, size_t size);

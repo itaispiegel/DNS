@@ -8,9 +8,11 @@
 #include "logger.hpp"
 #include "resolver.hpp"
 #include "query.hpp"
+#include "response.hpp"
 
 using DNS::Message;
 using DNS::Query;
+using DNS::Response;
 
 Server::Server(Resolver* resolver) : m_resolver(resolver) {
 	// Create a new inbound address
@@ -79,6 +81,9 @@ void Server::handle_query(Query* query) {
 	}
 
 	std::string resolved = m_resolver->resolve(query->get_qname());
+	Response response = *query;
+	response.parse_ip_address(resolved);
+
 	delete query;
 }
 
