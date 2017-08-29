@@ -29,7 +29,7 @@ namespace DNS {
          * @param buffer The buffer to code to.
          * @return The size of the coded message.
         **/
-        virtual int code(char* buffer) = 0;
+        virtual size_t code(char* buffer) = 0;
 
         /**
          * Pure virtual function that will decode the given buffer into the current message instance.
@@ -65,6 +65,13 @@ namespace DNS {
         void put16bits(char*& buffer, ushort value);
 
         /**
+         * Puts the 32 bits into the buffer.
+         * @param buffer The buffer to put the bits into.
+         * @param value The value to put into the buffer.
+         */
+        void put32bits(char*& buffer, uint value);
+
+        /**
          * Returns the next 8 bits of the buffer.
          * @param buffer The buffer to get the bits from.
          * @return The next 8 bits of the buffer.
@@ -77,6 +84,13 @@ namespace DNS {
          * @return The next 16 bits of the buffer.
          */
         ushort get16bits(char*& buffer);
+
+        /**
+         * Returns the next 32 bits of the buffer.
+         * @param buffer The buffer to get the bits from.
+         * @return The next 32 bits of the buffer.
+         */
+        uint get32bits(char*& buffer);
 
         // Getters
         ushort get_id() const;

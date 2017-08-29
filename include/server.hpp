@@ -31,8 +31,9 @@ public:
 
     /**
      * Send given the data to the client. 
+	 * @param buffer_size The size of the message.
     **/
-    void send(const std::string& msg);
+    void send(size_t buffer_size);
 
     /**
      * Run the DNS server - handle client requests.
@@ -55,7 +56,7 @@ private:
 	/**
 	 * Handle the given query.
 	**/
-	void handle_query(DNS::Query* query);
+	size_t handle_query(DNS::Query* query);
 
     // Members
 

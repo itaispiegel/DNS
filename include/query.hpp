@@ -23,7 +23,7 @@ namespace DNS {
 		Query() : Message(Message::Query) {}
 		Query(Message::Type type) : Message(type) {}
 
-		int code(char* buffer);
+		size_t code(char* buffer);
 		void decode(char* buffer, size_t size);
 
 		/**

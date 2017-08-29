@@ -30,14 +30,20 @@ namespace DNS {
 			void parse_ip_address(const std::string& ip);
 
 
-			int code(char* buffer);
+			size_t code(char* buffer);
 			void decode(char* buffer, size_t size);
 	
 		protected:
 			ushort m_name;
-			ulong m_ttl;
+			uint m_ttl;
 			uint m_rdlength;
 			uchar m_rdata[4];
+
+
+			/**
+			 * Codes the query name to the given buffer/
+			 **/
+			void code_qname(char*& buffer, const std::string& qname);
 	};
 }
 

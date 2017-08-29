@@ -3,7 +3,7 @@
 using DNS::Query;
 using DNS::Message;
 
-int Query::code(char* buffer) {
+size_t Query::code(char* buffer) {
 	return 0;
 }
 

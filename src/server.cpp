@@ -65,26 +65,30 @@ size_t Server::recv() {
 	return (size_t) data_len;
 }
 
-void Server::send(const std::string& msg) {
-	sendto(m_sock_fd, msg.c_str(), msg.length(), 0,
+void Server::send(size_t buffer_size) {
+	sendto(m_sock_fd, m_buffer, buffer_size, 0,
 		(struct sockaddr*) m_client, m_addr_len);
 }
 
-void Server::handle_query(Query* query) {
+size_t Server::handle_query(Query* query) {
 	debug("Received query of type: " + std::to_string(query->get_qtype()));
 
 	// Drop AAAA queries since our server does not support IPv6.
 	if (query->get_qtype() == Query::Type::AAAA) {
 		debug("Dropping IPv6 query");
 		delete query;
-		return;
+		return 0;
 	}
 
 	std::string resolved = m_resolver->resolve(query->get_qname());
 	Response response = *query;
 	response.parse_ip_address(resolved);
 
+	size_t buffer_size = response.code(m_buffer);
+
 	delete query;
+
+	return buffer_size;
 }
 
 void Server::run() {
@@ -102,7 +106,8 @@ void Server::run() {
 			Query* query = new Query;
 			query->decode(m_buffer, len);
 
-			handle_query(query);
+			size_t buffer_size = handle_query(query);
+			send(buffer_size);
 		}
 	}
 }

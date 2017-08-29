@@ -25,6 +25,14 @@ void Message::put16bits(char*& buffer, ushort value) {
 }
 
 /**
+ * Calls twice the Message::put16bits function.
+ **/
+void Message::put32bits(char*& buffer, uint value) {
+	put16bits(buffer, (value & 0xFFFF0000) >> 16);
+	put16bits(buffer, (value & 0x0000FFFF));
+}
+
+/**
  * Receives a reference to a buffer of unsigned bytes, returns the first value and increments the pointer.
 **/
 char Message::get8bits(char*& buffer) {
@@ -40,13 +48,24 @@ char Message::get8bits(char*& buffer) {
 ushort Message::get16bits(char*& buffer) {
 
     // Get the first byte and left shift it by 8 bits.
-    ushort c1 = static_cast<short>(get8bits(buffer));
-    c1 = c1 << 8;
+    ushort s1 = static_cast<short>(get8bits(buffer));
+    s1 = s1 << 8;
 
     // Add the second byte and return.
-    char c2 = get8bits(buffer);
-    return c1 + c2;
+    char s2 = get8bits(buffer);
+    return s1 + s2;
 }
+
+uint Message::get32bits(char*& buffer) {
+
+	// Get the first 2 bytes and left shift them by 16 bits.
+	uint i1 = static_cast<int>(get16bits(buffer));
+	i1 = i1 << 16;
+
+	// Add the other two bytes and return.
+	ushort i2 = get16bits(buffer);
+	return i1 + i2;
+}	
 
 /**
  * Serializes the message instance to the given buffer.
