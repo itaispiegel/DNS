@@ -25,11 +25,6 @@ public:
     Server(Resolver* resolver);
 
     /**
-     * The destructor deletes the server socket.
-    **/
-    virtual ~Server();
-
-    /**
      * Send given the data to the client. 
 	 * @param buffer_size The size of the message.
     **/
@@ -56,16 +51,16 @@ private:
 	/**
 	 * Handle the given query.
 	**/
-	size_t handle_query(DNS::Query* query);
+	size_t handle_query(const DNS::Query* query);
 
     // Members
 
     // The file descriptor of the socket
     int m_sock_fd;
-    sockaddr_in* m_addr;
+    sockaddr_in m_addr;
     socklen_t m_addr_len;
 
-    sockaddr_in* m_client;
+    sockaddr_in m_client;
 
     char m_buffer[BUFFER_SIZE];
 

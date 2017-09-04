@@ -10,9 +10,9 @@ int main() {
 	Logger& logger = Logger::instance();
 	logger.debug("Initializing DNS");
 
-	Resolver* resolver = new Resolver;
-	Server* server = new Server(resolver);
-	server->run();
+	Resolver resolver;
+	Server server(&resolver);
+	server.run();
 
 	return 0;
 }

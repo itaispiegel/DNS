@@ -22,7 +22,7 @@ namespace DNS {
 			 * Copy contructor from query instance.
 			 * TODO Rule of three - need to also implement destructor and copy assignment operator.
 			**/
-			Response(const Query& query);
+			explicit Response(const Query& query);
 
 			/**
 			 * Receives an IP address, for example: 10.0.0.138 and parses the value to the member m_rdata, so it will hold: \x0a\x00\x00\x8a
@@ -38,7 +38,6 @@ namespace DNS {
 			uint m_ttl;
 			uint m_rdlength;
 			uchar m_rdata[4];
-
 
 			/**
 			 * Codes the query name to the given buffer/

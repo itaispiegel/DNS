@@ -21,7 +21,7 @@ namespace DNS {
 		};
 
 		Query() : Message(Message::Query) {}
-		Query(Message::Type type) : Message(type) {}
+		explicit Query(Message::Type type) : Message(type) {}
 
 		size_t code(char* buffer);
 		void decode(char* buffer, size_t size);

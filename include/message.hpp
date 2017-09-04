@@ -112,7 +112,7 @@ namespace DNS {
          * Constructor
          * @param type The type of the DNS message.
          */
-        Message(Type type) : m_qr(type) {}
+        explicit Message(Type type) : m_qr(type) {}
 
         /**
          * Destructor
